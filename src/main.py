@@ -68,7 +68,7 @@ class Window(QMainWindow):
             p.rename(p.with_suffix(".mp3"))
         except Exception as e:
             print(e)
-            ErrorBox(errorInfo="Error na Transformação")
+            ErrorBox(errorInfo="Error na Transformação, baixado como video")
         finally:
             SuccessBox(successInfo="Download concluído")
 
