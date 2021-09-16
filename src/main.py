@@ -7,7 +7,6 @@ from PyQt5.QtWidgets import (
     QMessageBox,
     QWidget,
     QLabel,
-
 )
 from pytube import YouTube
 from pathlib import Path
@@ -32,8 +31,6 @@ class SuccessBox(QMessageBox):
         msg.setText(successInfo)
         msg.setWindowTitle(successTitle)
         msg.exec_()
-
-class LoadingBox(Q):
 
 
 class Window(QMainWindow):
