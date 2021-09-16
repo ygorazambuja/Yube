@@ -20,8 +20,3 @@ jobs:
       uses: JackMcKew/pyinstaller-action-windows@main
       with:
         path: src
-
-    - uses: actions/upload-artifact@v2
-      with:
-        name: main
-        path: dist/main.exe

@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\User\\pytube'],
+             pathex=['C:\\Users\\User\\pytube\\src'],
              binaries=[],
              datas=[],
              hiddenimports=[],
