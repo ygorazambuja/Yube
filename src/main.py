@@ -7,11 +7,13 @@ from PyQt5.QtWidgets import (
     QMessageBox,
     QWidget,
     QLabel,
-    QLineEdit,
-    QPushButton,
+
 )
 from pytube import YouTube
 from pathlib import Path
+
+from ui_components.QButton import QButton
+from ui_components.QTextField import QInputField
 
 
 class ErrorBox(QMessageBox):
@@ -31,6 +33,8 @@ class SuccessBox(QMessageBox):
         msg.setWindowTitle(successTitle)
         msg.exec_()
 
+class LoadingBox(Q):
+
 
 class Window(QMainWindow):
     def __init__(self):
@@ -42,8 +46,7 @@ class Window(QMainWindow):
         widget = QWidget()
         widget.setLayout(self.layout)
         self.setCentralWidget(widget)
-
-        self.setFixedSize(600, 200)
+        self.layout.setContentsMargins(50, 30, 30, 50)
 
         self.render_ui_components()
         self.show()
@@ -51,10 +54,9 @@ class Window(QMainWindow):
     def render_ui_components(self):
         label = QLabel("<h1>Yube!</h1>")
 
-        self.linkInput = QLineEdit(self)
-        self.pasteButton = QPushButton("Colar", self)
-        self.downloadButton = QPushButton("Download", self)
-
+        self.linkInput = QInputField(self)
+        self.pasteButton = QButton("Colar")
+        self.downloadButton = QButton("Download")
         self.downloadButton.clicked.connect(self.handle_download_video)
         self.pasteButton.clicked.connect(self.get_text_from_clipboard)
         self.layout.addRow(label)
@@ -95,7 +97,6 @@ class Window(QMainWindow):
 
     def set_pasted_on_line_input(self, pasted):
         self.linkInput.setText(pasted)
-        pass
 
 
 App = QApplication(sys.argv)
