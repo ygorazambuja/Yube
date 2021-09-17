@@ -55,7 +55,7 @@ class Window(QMainWindow):
         self.pasteButton = QPushButton("Colar", self)
         self.downloadButton = QPushButton("Download", self)
 
-        self.downloadButton.clicked.connect(self.download_video)
+        self.downloadButton.clicked.connect(self.handle_download_video)
         self.pasteButton.clicked.connect(self.get_text_from_clipboard)
         self.layout.addRow(label)
         self.layout.addRow(self.linkInput)
@@ -72,10 +72,11 @@ class Window(QMainWindow):
         finally:
             SuccessBox(successInfo="Download concluído")
 
-    def download_video(self):
+    def handle_download_video(self):
         try:
             yt = YouTube(self.linkInput.text())
             yt.streams.get_audio_only().download()
+
         except:
             ErrorBox(errorInfo="Erro no download")
             return
